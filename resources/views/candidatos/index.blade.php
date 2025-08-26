@@ -39,7 +39,7 @@
 
                                     <div>
 
-                                        <a 
+                                        <a  
                                             href="{{asset('storage/cvs/' . $candidato->cv)}}"
                                             class=" inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm 
                                             leading-5 font-medium rounded-full bg-white text-black hover:bg-slate-400"
