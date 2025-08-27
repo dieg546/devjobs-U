@@ -12,38 +12,42 @@
 
                     <h1 class="text-4xl font-bold text-center mb-10">Mis Notificaciones</h1>
 
-                    @forelse ($notificaciones as $notificacion)
-                        
-                        <div class=" p-5 border-b border-gray-700 gap-5  md:flex md:justify-between md:items-center">
+                    <div class=" divide-y divide-white w-full">
 
-                            <div class="">
+                        @forelse ($notificaciones as $notificacion)
+                            
+                            <div class=" p-5 border-b border-gray-700 gap-5  md:flex md:justify-between md:items-center">
 
-                                <p class=" text-gray-400">
-                                    Tienes un nuevo candidato en:
-                                    <span class=" text-white font-bold">{{$notificacion->data['nombre_vacante']}}</span>
-                                </p>
+                                <div class="">
 
-                                <p class=" text-gray-400">
-                                    Hace: 
-                                    <span class=" text-white font-bold">{{$notificacion->created_at->diffForHumans()}}</span>
-                                </p>
+                                    <p class=" text-gray-400">
+                                        Tienes un nuevo candidato en:
+                                        <span class=" text-white font-bold">{{$notificacion->data['nombre_vacante']}}</span>
+                                    </p>
+
+                                    <p class=" text-gray-400">
+                                        Hace: 
+                                        <span class=" text-white font-bold">{{$notificacion->created_at->diffForHumans()}}</span>
+                                    </p>
+                                </div>
+
+                                <div class=" my-5 md:my-0">
+                                    <a href="{{route('candidatos.index',$notificacion->data['id_vacante'])}}" class="p-3 bg-teal-500 font-bold rounded-lg">
+                                        Ver Candidato 
+                                    </a>
+                                </div>
+
                             </div>
 
-                            <div class=" my-5 md:my-0">
-                                <a href="#" class="p-3 bg-teal-500 font-bold rounded-lg">
-                                    Ver Candidato 
-                                </a>
-                            </div>
+                        @empty
+                            
+                            <p class=" text-center text-gray-500">
+                                Parece que no tienes notificaciones.
+                            </p>
 
-                        </div>
+                        @endforelse
 
-                    @empty
-                        
-                        <p class=" text-center text-gray-500">
-                            Parece que no tienes notificaciones.
-                        </p>
-
-                    @endforelse
+                    </div>
                     
                 </div>
             </div>
